@@ -3,55 +3,49 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class process extends ai{
     public static void start(){
-
-        if (!reset){
-            resetButton.setEnabled(false);
-            info.setText("Can't reset...");
-        } else {
-            c = 1;
-            N = 0;
-            n = 0;
-            countDraw = 0;
-            play = true;
-            one = false;
-            two = false;
-            three = false;
-            four = false;
-            five = false;
-            six = false;
-            seven = false;
-            eight = false;
-            nine = false;
-            One.setText(null);
-            One.setBackground(Color.white);
-            One.setForeground(Color.black);
-            Two.setText(null);
-            Two.setBackground(Color.white);
-            Two.setForeground(Color.black);
-            Three.setText(null);
-            Three.setBackground(Color.white);
-            Three.setForeground(Color.black);
-            Four.setText(null);
-            Four.setBackground(Color.white);
-            Four.setForeground(Color.black);
-            Five.setText(null);
-            Five.setBackground(Color.white);
-            Five.setForeground(Color.black);
-            Six.setText(null);
-            Six.setBackground(Color.white);
-            Six.setForeground(Color.black);
-            Seven.setText(null);
-            Seven.setBackground(Color.white);
-            Seven.setForeground(Color.black);
-            Eight.setText(null);
-            Eight.setBackground(Color.white);
-            Eight.setForeground(Color.black);
-            Nine.setText(null);
-            Nine.setBackground(Color.white);
-            Nine.setForeground(Color.black);
-            info.setText(enterLetter() + "'s Turn");
-            letter = enterLetter();
-        }
+        c = 1;
+        N = 0;
+        n = 0;
+        countDraw = 0;
+        play = true;
+        one = false;
+        two = false;
+        three = false;
+        four = false;
+        five = false;
+        six = false;
+        seven = false;
+        eight = false;
+        nine = false;
+        One.setText(null);
+        One.setBackground(Color.white);
+        One.setForeground(Color.black);
+        Two.setText(null);
+        Two.setBackground(Color.white);
+        Two.setForeground(Color.black);
+        Three.setText(null);
+        Three.setBackground(Color.white);
+        Three.setForeground(Color.black);
+        Four.setText(null);
+        Four.setBackground(Color.white);
+        Four.setForeground(Color.black);
+        Five.setText(null);
+        Five.setBackground(Color.white);
+        Five.setForeground(Color.black);
+        Six.setText(null);
+        Six.setBackground(Color.white);
+        Six.setForeground(Color.black);
+        Seven.setText(null);
+        Seven.setBackground(Color.white);
+        Seven.setForeground(Color.black);
+        Eight.setText(null);
+        Eight.setBackground(Color.white);
+        Eight.setForeground(Color.black);
+        Nine.setText(null);
+        Nine.setBackground(Color.white);
+        Nine.setForeground(Color.black);
+        info.setText(enterLetter() + "'s Turn");
+        letter = enterLetter();
     }
 
     public static void setColor(){
@@ -97,8 +91,9 @@ public class process extends ai{
             if (!checkBox()) {
                 display();
 
-
-                AI();
+                if (play){
+                    AI();
+                }
             } else {
                 info.setText("Invalid input!");
             }
@@ -356,7 +351,6 @@ public class process extends ai{
         } else if (countDraw == 9) { //a tie is accomplished if the countDraw variable records 9 turns without a win. This means that the board is filled up
             play = false;
             info.setText("It's a draw!");
-            reset = false;
         }
         winColor();
     }
