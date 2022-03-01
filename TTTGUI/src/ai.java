@@ -6,15 +6,16 @@ public class ai extends data{
     public static void AI(){
 
         Timer timer =  new Timer();
-        timer.schedule(new TimerTask() {
+        timer.schedule(new TimerTask() { //a timer that delays the computer's input by .5 seconds
             @Override
-            public void run() {
-                if (AIPlayO() != -1) N = AIPlayO();
-                else if (AIPlayX() != -1) N = AIPlayX();
+            public void run() { // algorithms are run to decide the most appropriate input by the computer
+                if (AIPlayO() != -1) N = AIPlayO();  //if the computer sees two Os, it completes it to win
+                else if (AIPlayX() != -1) N = AIPlayX(); //if the computer sees two Xs, it stops you from winning
                 else if ((AIPlayO() == -1) & (AIPlayX() == -1)) N = process.rand();
+                //if neither of the above is noticed, the computer goes ahead to input a random input
 
-                if (process.checkBox()) {
-                    do {
+                if (process.checkBox()) { //if the input is already occupied...
+                    do { //it continues to input a random input until it plays a valid move
                         N = process.rand();
                         if (!process.checkBox()){
                             break;
@@ -23,14 +24,16 @@ public class ai extends data{
 
                 }
 
-                process.display();
+                process.display(); //if the input is valid however, it plays it instead
 
             }
-        }, 500);
+        }, 500); // delays by .5 seconds before playing its turn
 
     }
 
     public static int AIPlayO () {
+        /*this method calls on the AICheckTwoOs to check if there are two Os on the board
+        * if there is, it completes it and wins*/
         int a = AICheckTwoOs();
         switch (a){
             case 23, 47, 59 -> {
@@ -67,6 +70,8 @@ public class ai extends data{
     }
 
     public static int AIPlayX () {
+        /*this method calls on the AICheckTwoXs to check if there are two Xs on the board
+         * if there is, it blocks you and stops you from winning*/
         int b = AICheckTwoXs();
         switch (b){
             case 23, 47, 59 -> {
@@ -103,6 +108,10 @@ public class ai extends data{
     }
 
     public static int AICheckTwoOs() {
+        /*this method checks if there are two Os on the board
+         * if there is, it returns a number that represents the two spaces they occupy,
+         * but it does this only if the third space is empty
+         * if it isn't, it returns 0*/
 
         //cases with 1s
         if (One.getText() == "O" & Two.getText() == "O"){
@@ -244,6 +253,10 @@ public class ai extends data{
     }
 
     public static int AICheckTwoXs() {
+        /* just like the method above, this method checks if there are two Xs on the board
+         * if there is, it returns a number that represents the two spaces they occupy,
+         * but it does this only if the third space is empty
+         * if it isn't, it returns 0*/
         //cases with 1s
         if (One.getText() == "X" & Two.getText() == "X"){
             if (!three){
