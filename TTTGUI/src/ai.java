@@ -13,8 +13,6 @@ public class ai extends data{
                 else if (AIPlayX() != -1) N = AIPlayX();
                 else if ((AIPlayO() == -1) & (AIPlayX() == -1)) N = process.rand();
 
-                System.out.println("Computer plays: " + N);
-
                 if (process.checkBox()) {
                     do {
                         N = process.rand();
@@ -117,126 +115,126 @@ public class ai extends data{
                 return 13;
             }
         }
-        if (One.getText() == "X" & Four.getText() == "X"){
+        if (One.getText() == "O" & Four.getText() == "O"){
             if (!seven){
                 return 14;
             }
         }
-        if (One.getText() == "X" & Five.getText() == "X"){
+        if (One.getText() == "O" & Five.getText() == "O"){
             if (!nine){
                 return 15;
             }
         }
-        if (One.getText() == "X" & Seven.getText() == "X"){
+        if (One.getText() == "O" & Seven.getText() == "O"){
             if (!four){
                 return 17;
             }
         }
-        if (One.getText() == "X" & Nine.getText() == "X"){
+        if (One.getText() == "O" & Nine.getText() == "O"){
             if (!five){
                 return 19;
             }
         }
 
         //cases with 2s
-        if (Two.getText() == "X" & Three.getText() == "X"){
+        if (Two.getText() == "O" & Three.getText() == "O"){
             if (!one){
                 return 23;
             }
         }
-        if (Two.getText() == "X" & Five.getText() == "X"){
+        if (Two.getText() == "O" & Five.getText() == "O"){
             if (!eight){
                 return 25;
             }
         }
-        if (Two.getText() == "X" & Eight.getText() == "X"){
+        if (Two.getText() == "O" & Eight.getText() == "O"){
             if (!five){
                 return 28;
             }
         }
 
         //cases with 3s
-        if (Three.getText() == "X" & Five.getText() == "X"){
+        if (Three.getText() == "O" & Five.getText() == "O"){
             if (!seven){
                 return 35;
             }
         }
-        if (Three.getText() == "X" & Six.getText() == "X"){
+        if (Three.getText() == "O" & Six.getText() == "O"){
             if (!nine){
                 return 36;
             }
         }
-        if (Three.getText() == "X" & Seven.getText() == "X"){
+        if (Three.getText() == "O" & Seven.getText() == "O"){
             if (!five){
                 return 37;
             }
         }
-        if (Three.getText() == "X" & Nine.getText() == "X"){
+        if (Three.getText() == "O" & Nine.getText() == "O"){
             if (!six){
                 return 39;
             }
         }
 
         //cases with 4s
-        if (Four.getText() == "X" & Five.getText() == "X"){
+        if (Four.getText() == "O" & Five.getText() == "O"){
             if (!six){
                 return 45;
             }
         }
-        if (Four.getText() == "X" & Six.getText() == "X"){
+        if (Four.getText() == "O" & Six.getText() == "O"){
             if (!five){
                 return 46;
             }
         }
-        if (Four.getText() == "X" & Seven.getText() == "X"){
+        if (Four.getText() == "O" & Seven.getText() == "O"){
             if (!one){
                 return 47;
             }
         }
 
         //cases with 5s
-        if (Five.getText() == "X" & Six.getText() == "X"){
+        if (Five.getText() == "O" & Six.getText() == "O"){
             if (!four){
                 return 56;
             }
         }
-        if (Five.getText() == "X" & Seven.getText() == "X"){
+        if (Five.getText() == "O" & Seven.getText() == "O"){
             if (!three){
                 return 57;
             }
         }
-        if (Five.getText() == "X" & Eight.getText() == "X"){
+        if (Five.getText() == "O" & Eight.getText() == "O"){
             if (!two){
                 return 58;
             }
         }
-        if (Five.getText() == "X" & Nine.getText() == "X"){
+        if (Five.getText() == "O" & Nine.getText() == "O"){
             if (!one){
                 return 59;
             }
         }
 
         //cases with 6s
-        if (Six.getText() == "X" & Nine.getText() == "X"){
+        if (Six.getText() == "O" & Nine.getText() == "O"){
             if (!three){
                 return 69;
             }
         }
 
         //cases with 7s
-        if (Seven.getText() == "X" & Eight.getText() == "X"){
+        if (Seven.getText() == "O" & Eight.getText() == "O"){
             if (!nine){
                 return 78;
             }
         }
-        if (Seven.getText() == "X" & Nine.getText() == "X"){
+        if (Seven.getText() == "O" & Nine.getText() == "O"){
             if (!eight){
                 return 79;
             }
         }
 
         //cases with 8s
-        if (Eight.getText() == "X" & Nine.getText() == "X"){
+        if (Eight.getText() == "O" & Nine.getText() == "O"){
             if (!seven){
                 return 89;
             }
