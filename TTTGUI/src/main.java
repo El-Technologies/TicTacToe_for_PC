@@ -47,6 +47,7 @@ public class main extends process{
     public void initialize() {
         frmTictactoeBySommy = new JFrame();
         frmTictactoeBySommy.setTitle("TicTacToe by Sommy");
+        frmTictactoeBySommy.setResizable(false);
         frmTictactoeBySommy.getContentPane().setBackground(Color.WHITE);
         frmTictactoeBySommy.getContentPane().setLayout(null);
 
