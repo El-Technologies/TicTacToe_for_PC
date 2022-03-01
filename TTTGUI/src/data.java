@@ -8,7 +8,6 @@ public class data {
     public static int n = 0; //random variable
     public static int countDraw = 0; //variable to count the number of turns that have been played without a win. Once it gets to 9 (once every box is filled up), it's considered a draw.
     public static int randomNumber;
-    public static boolean reset = true;
     public static boolean play = true;
     public static boolean one = false; //from one through nine, these booleans are used to check if their respective boxes have been chosen previously by a player. In short, it's used to make sure that a box isn't chosen more than once
     public static boolean two = false;
