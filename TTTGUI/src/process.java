@@ -2,10 +2,9 @@ import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class process extends ai{
-    public static void start(){
+    public static void start(){ //everything is reset back to how it was in the beginning of the game
         c = 1;
         N = 0;
-        n = 0;
         countDraw = 0;
         play = true;
         one = false;
@@ -48,7 +47,7 @@ public class process extends ai{
         letter = enterLetter();
     }
 
-    public static void setColor(){
+    public static void setColor(){ //this method prints "X" in blue and "O" in red
         if (letter.equals("X")){
             switch (N){
                 case 1 -> One.setForeground(Color.blue);
@@ -76,7 +75,7 @@ public class process extends ai{
         }
     }
 
-    public static void display() {
+    public static void display() { //this method calls on a series of methods to be executed when a button is clicked
         writeBox(N);
         setColor();
         c++;
@@ -86,7 +85,7 @@ public class process extends ai{
         checkWin();
     }
 
-    public static void onClickBox() { // this method is activated everytime a box is clicked. It controls series of algorithms and methods (na lie oh...na just 3 main methods with 3 sub methods lol) everytime a box is clicked
+    public static void onClickBox() { // this method is activated everytime a box is clicked
         if (play){
             if (!checkBox()) {
                 display();
@@ -100,15 +99,24 @@ public class process extends ai{
         }
     }
 
-    public static boolean checkXO() { // this method alternates the turns of the players with a very simple algorithm. Remember the c variable at the beginning? It keeps increasing by 1 after every loop...this is because if it's even in a particular loop, it's O's turn and if it's odd, it's X's turn. But this method just makes it return a true value if it's even and a false one if it's false
+    public static boolean checkXO() {
+        /* this method alternates the turns of the players with a very simple algorithm.
+        Remember the c variable at the beginning?
+        It keeps increasing by 1 after a button is pressed...
+        this is because if it's even, it's O's turn and if it's odd, it's X's turn.
+        But this method just makes it return true if it's even and false if it's odd */
+
         return c % 2 == 0;
     }
 
-    public static String enterLetter() { // this method relies on the one above (checkXO) to decide which letter to be displayed. It also decides which player's turn it is
+    public static String enterLetter() {
+        // this method relies on the one above (checkXO) to decide which letter to be displayed.
+        // It also decides which player's turn it is
+
         if (checkXO()) return "O"; else return "X";
     }
 
-    public static int rand() {
+    public static int rand() { //this method is used by the computer player to give a random input when necessary
         randomNumber = ThreadLocalRandom.current().nextInt(1, 9);
         return randomNumber;
     }
@@ -127,7 +135,10 @@ public class process extends ai{
         }
     }
 
-    public static boolean checkBox() { // this checks whether the selected box is empty or not. If it returns a false value, its empty. If it returns otherwise, it's occupied
+    public static boolean checkBox() {
+        /* this checks whether the selected box is empty or not
+        If it returns a false value, its empty
+        If it returns otherwise, it's occupied*/
         switch (N) {
             case 1:
                 if (!one) {
@@ -339,16 +350,32 @@ public class process extends ai{
         return -1;
     }
 
-    public static void checkWin() { // the second most tedious method in this program after the AI method... this checks if any of the players have won the game
-        if ((One.getText() == "X" & Two.getText() == "X" & Three.getText() == "X") | (Four.getText() == "X" & Five.getText() == "X" & Six.getText() == "X") | (Seven.getText() == "X" & Eight.getText() == "X" & Nine.getText() == "X") | (One.getText() == "X" & Four.getText() == "X" & Seven.getText() == "X") | (Two.getText() == "X" & Five.getText() == "X" & Eight.getText() == "X") | (Three.getText() == "X" & Six.getText() == "X" & Nine.getText() == "X") | (One.getText() == "X" & Five.getText() == "X" & Nine.getText() == "X") | (Three.getText() == "X" & Five.getText() == "X" & Seven.getText() == "X")) {
+    public static void checkWin() { //this checks if any of the players have won the game
+        if ((One.getText() == "X" & Two.getText() == "X" & Three.getText() == "X") |
+                (Four.getText() == "X" & Five.getText() == "X" & Six.getText() == "X") |
+                (Seven.getText() == "X" & Eight.getText() == "X" & Nine.getText() == "X") |
+                (One.getText() == "X" & Four.getText() == "X" & Seven.getText() == "X") |
+                (Two.getText() == "X" & Five.getText() == "X" & Eight.getText() == "X") |
+                (Three.getText() == "X" & Six.getText() == "X" & Nine.getText() == "X") |
+                (One.getText() == "X" & Five.getText() == "X" & Nine.getText() == "X") |
+                (Three.getText() == "X" & Five.getText() == "X" & Seven.getText() == "X")) {
             play = false;
             info.setText("X wins!"); //X wins if it forms a complete row, column or diagonal. Same goes for O.
             winNumber("X");
-        } else if ((One.getText() == "O" & Two.getText() == "O" & Three.getText() == "O") | (Four.getText() == "O" & Five.getText() == "O" & Six.getText() == "O") | (Seven.getText() == "O" & Eight.getText() == "O" & Nine.getText() == "O") | (One.getText() == "O" & Four.getText() == "O" & Seven.getText() == "O") | (Two.getText() == "O" & Five.getText() == "O" & Eight.getText() == "O") | (Three.getText() == "O" & Six.getText() == "O" & Nine.getText() == "O") | (One.getText() == "O" & Five.getText() == "O" & Nine.getText() == "O") | (Three.getText() == "O" & Five.getText() == "O" & Seven.getText() == "O")) {
+        } else if ((One.getText() == "O" & Two.getText() == "O" & Three.getText() == "O") |
+                (Four.getText() == "O" & Five.getText() == "O" & Six.getText() == "O") |
+                (Seven.getText() == "O" & Eight.getText() == "O" & Nine.getText() == "O") |
+                (One.getText() == "O" & Four.getText() == "O" & Seven.getText() == "O") |
+                (Two.getText() == "O" & Five.getText() == "O" & Eight.getText() == "O") |
+                (Three.getText() == "O" & Six.getText() == "O" & Nine.getText() == "O") |
+                (One.getText() == "O" & Five.getText() == "O" & Nine.getText() == "O") |
+                (Three.getText() == "O" & Five.getText() == "O" & Seven.getText() == "O")) {
             play = false;
             info.setText("O wins!");
             winNumber("O");
-        } else if (countDraw == 9) { //a tie is accomplished if the countDraw variable records 9 turns without a win. This means that the board is filled up
+        } else if (countDraw == 9) {
+            //a tie is accomplished if the countDraw variable records 9 turns without a win.
+            // This means that the board is filled up
             play = false;
             info.setText("It's a draw!");
         }
