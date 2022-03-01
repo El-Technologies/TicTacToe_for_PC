@@ -46,7 +46,7 @@ public class main extends process{
 
     public void initialize() {
         frmTictactoeBySommy = new JFrame();
-        frmTictactoeBySommy.setTitle("TicTacToe by Sohmteee");
+        frmTictactoeBySommy.setTitle("TicTacToe by Sohmtee");
         frmTictactoeBySommy.getContentPane().setBackground(Color.WHITE);
         frmTictactoeBySommy.getContentPane().setLayout(null);
 
