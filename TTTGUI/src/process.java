@@ -2,8 +2,37 @@ import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class process extends ai{
-    public static void start(){ //everything is reset back to how it was in the beginning of the game
+
+    public static void start(){
         c = 1;
+        info.setText("Menu");
+        One.setVisible(false);
+        Two.setVisible(false);
+        Three.setVisible(false);
+        Four.setVisible(false);
+        Five.setVisible(false);
+        Six.setVisible(false);
+        Seven.setVisible(false);
+        Eight.setVisible(false);
+        Nine.setVisible(false);
+        resetButton.setVisible(false);
+        menuButton.setVisible(false);
+        PVCBtn.setVisible(true);
+        PVPBtn.setVisible(true);
+        EasyBtn.setVisible(false);
+        MediumBtn.setVisible(false);
+        HardBtn.setVisible(false);
+        XScore.setVisible(false);
+        XScore.setText("O");
+        OScore.setVisible(false);
+        OScore.setText("O");
+        XLabel.setVisible(false);
+        OLabel.setVisible(false);
+    }
+    public static void reset(){ //everything is reset back to how it was in the beginning of the game
+        if (!play) C++;
+        rando = true;
+        randx = true;
         N = 0;
         countDraw = 0;
         play = true;
@@ -43,8 +72,72 @@ public class process extends ai{
         Nine.setText(null);
         Nine.setBackground(Color.white);
         Nine.setForeground(Color.black);
+
+        c = C;
         info.setText(enterLetter() + "'s Turn");
         letter = enterLetter();
+
+        if (c%2 == 0){
+            AI();
+        }
+
+    }
+
+    public static void PVP() {
+        PVCBtn.setVisible(false);
+        PVPBtn.setVisible(false);
+        menuButton.setVisible(true);
+        resetButton.setVisible(true);
+        One.setVisible(true);
+        Two.setVisible(true);
+        Three.setVisible(true);
+        Four.setVisible(true);
+        Five.setVisible(true);
+        Six.setVisible(true);
+        Seven.setVisible(true);
+        Eight.setVisible(true);
+        Nine.setVisible(true);
+        XScore.setVisible(true);
+        XScore.setText("O");
+        OScore.setVisible(true);
+        OScore.setText("O");
+        XLabel.setVisible(true);
+        OLabel.setVisible(true);
+        reset();
+    }
+    public static void PVC() {
+        info.setText("Level");
+        PVCBtn.setVisible(false);
+        PVPBtn.setVisible(false);
+        EasyBtn.setVisible(true);
+        MediumBtn.setVisible(true);
+        HardBtn.setVisible(true);
+//        HardBtn.setEnabled(false);
+
+    }
+
+    public static void PV_ () {
+        EasyBtn.setVisible(false);
+        MediumBtn.setVisible(false);
+        HardBtn.setVisible(false);
+        menuButton.setVisible(true);
+        resetButton.setVisible(true);
+        One.setVisible(true);
+        Two.setVisible(true);
+        Three.setVisible(true);
+        Four.setVisible(true);
+        Five.setVisible(true);
+        Six.setVisible(true);
+        Seven.setVisible(true);
+        Eight.setVisible(true);
+        Nine.setVisible(true);
+        XScore.setVisible(true);
+        XScore.setText("O");
+        OScore.setVisible(true);
+        OScore.setText("O");
+        XLabel.setVisible(true);
+        OLabel.setVisible(true);
+        reset();
     }
 
     public static void setColor(){ //this method prints "X" in blue and "O" in red
@@ -86,15 +179,25 @@ public class process extends ai{
     }
 
     public static void onClickBox() { // this method is activated everytime a box is clicked
-        if (play){
-            if (!checkBox()) {
-                display();
-
-                if (play){
-                    AI();
+        if (PlayervsPlayer) {
+            if (play){
+                if (!checkBox()) {
+                    display();
+                } else {
+                    info.setText("Invalid input!");
                 }
-            } else {
-                info.setText("Invalid input!");
+            }
+        } else {
+            if (play){
+                if (!checkBox()) {
+                    display();
+
+                    if (play){
+                        AI();
+                    }
+                } else {
+                    info.setText("Invalid input!");
+                }
             }
         }
     }
@@ -359,9 +462,11 @@ public class process extends ai{
                 (Three.getText() == "X" & Six.getText() == "X" & Nine.getText() == "X") |
                 (One.getText() == "X" & Five.getText() == "X" & Nine.getText() == "X") |
                 (Three.getText() == "X" & Five.getText() == "X" & Seven.getText() == "X")) {
+            x++;
             play = false;
             info.setText("X wins!"); //X wins if it forms a complete row, column or diagonal. Same goes for O.
             winNumber("X");
+            XScore.setText(String.valueOf(x));
         } else if ((One.getText() == "O" & Two.getText() == "O" & Three.getText() == "O") |
                 (Four.getText() == "O" & Five.getText() == "O" & Six.getText() == "O") |
                 (Seven.getText() == "O" & Eight.getText() == "O" & Nine.getText() == "O") |
@@ -370,9 +475,11 @@ public class process extends ai{
                 (Three.getText() == "O" & Six.getText() == "O" & Nine.getText() == "O") |
                 (One.getText() == "O" & Five.getText() == "O" & Nine.getText() == "O") |
                 (Three.getText() == "O" & Five.getText() == "O" & Seven.getText() == "O")) {
+            o++;
             play = false;
             info.setText("O wins!");
             winNumber("O");
+            OScore.setText(String.valueOf(o));
         } else if (countDraw == 9) {
             //a tie is accomplished if the countDraw variable records 9 turns without a win.
             // This means that the board is filled up
@@ -380,5 +487,6 @@ public class process extends ai{
             info.setText("It's a draw!");
         }
         winColor();
+
     }
 }
