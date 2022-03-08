@@ -1,5 +1,4 @@
 # tictactoe
 A GUI TicTacToe project in java.
-There's a mysterious little bug that makes the whole code go haywire if you reset after a tie so the reset button will be disabled if you end up in a tie.
-You can freely reset after you or the computer wins though.
-You'd just have to re-run the project if you end up in a tie.
+There's a mysterious little bug that makes the whole application go haywire if the CPU is to play the last turn that leads to a tie.
+Just pray you don't experience the bug cos you'll have to re-open the app *crying emoji*
